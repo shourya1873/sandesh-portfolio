@@ -54,7 +54,7 @@ const Blogs = () => {
                             {/* Image */}
                             <Link href={`/blog/${post?.url_key}`}>
                                 <img
-                                    src={post?.featured_image} // replace with your image path
+                                    src={`storage/${post?.featured_image}`} // replace with your image path
                                     alt={post?.blog_title}
                                     className="w-full h-[150px] sm:h-[256px] lg:h-[456px] object-cover"
                                 />
