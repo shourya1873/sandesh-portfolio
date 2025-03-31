@@ -56,7 +56,6 @@ const CodeRenderer = ({ html }: { html: string }) => {
             }
 
             if(domNode.name === 'p') {
-                console.log(domNode);
                 return (
                     <p className={'text-lg'}> {domNode?.children[0]?.data} </p>
                 );

@@ -9,12 +9,12 @@ const Blog = () => {
 
     return (
         <StoreFrontLayout>
-            <Head title={post?.title}>
-                <title>{post?.title}</title>
+            <Head title={post?.blog_title}>
+                <title>{post?.blog_title}</title>
                 <meta name="description" content="Blog Detail Page" />
-                <meta property="og:title" content={post?.title} />
+                <meta property="og:title" content={post?.blog_title} />
                 <meta property="og:type" content="article" />
-                <meta property="og:image" content={post?.featured_image} />
+                <meta property="og:image" content={`${import.meta.env.VITE_APP_URL}/content/${post?.featured_image}`} />
                 <meta property="og:url" content={window.location.href} />
             </Head>
             <section>

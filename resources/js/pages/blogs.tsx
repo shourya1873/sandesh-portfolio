@@ -29,7 +29,6 @@ const Blogs = () => {
 
     const onClickPaginate = (pageNumber: String) => {
         setSearchParams({ ['p']: pageNumber });
-        console.log(window.document.URL);
         router.get(window.document.URL);
     };
 
