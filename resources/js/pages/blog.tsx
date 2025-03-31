@@ -1,14 +1,22 @@
 import React from 'react';
-import { usePage } from '@inertiajs/react';
+import { Head, usePage } from '@inertiajs/react';
 import parse from 'html-react-parser';
 import CodeRenderer from '@/components/generic/CodeRenderer';
 import StoreFrontLayout from '@/layouts/storefront/StoreFrontLayout';
 
 const Blog = () => {
     const { post } = usePage().props;
-    console.log(post);
+
     return (
         <StoreFrontLayout>
+            <Head title={post?.title}>
+                <title>{post?.title}</title>
+                <meta name="description" content="Blog Detail Page" />
+                <meta property="og:title" content={post?.title} />
+                <meta property="og:type" content="article" />
+                <meta property="og:image" content={post?.featured_image} />
+                <meta property="og:url" content={window.location.href} />
+            </Head>
             <section>
                 <div className="flex h-[500px] w-full items-center justify-center">
                     <h1 className="text-6xl font-bold transition-colors duration-150 hover:text-[#ff014f] cursor-pointer mx-10 text-center">{post?.blog_title}</h1>
