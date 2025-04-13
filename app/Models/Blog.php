@@ -11,7 +11,7 @@ class Blog extends Model implements HasMedia
 
     use InteractsWithMedia;
 
-    protected $fillable = ['blog_title', 'content', 'featured_image', 'tags', 'url_key'];
+    protected $fillable = ['blog_title', 'content', 'featured_image', 'tags', 'url_key', 'is_active'];
 
     protected $casts = [
         'tags' => 'array',

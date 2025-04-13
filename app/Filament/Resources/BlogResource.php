@@ -10,6 +10,7 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -54,6 +55,9 @@ class BlogResource extends Resource
                      ->unique(ignoreRecord: true)
                      ->dehydrated() // Ensures it still gets saved
                      ->helperText('Auto-generated from title.'),
+                Toggle::make('is_active')
+                    ->label('Active')
+                    ->default(true),
             ]);
     }
 
@@ -63,7 +67,15 @@ class BlogResource extends Resource
             ->columns([
                 TextColumn::make('blog_title')->sortable()->searchable(),
                 TextColumn::make('created_at')->dateTime()->sortable(),
-                TextColumn::make('updated_at')->dateTime()->sortable()
+                TextColumn::make('updated_at')->dateTime()->sortable(),
+                TextColumn::make('is_active')
+                    ->label('Status')
+                    ->badge()
+                    ->colors([
+                        'danger' => false,
+                        'success' => true,
+                    ])
+                    ->formatStateUsing(fn (bool $state): string => $state ? 'Active' : 'Inactive'),
             ])
             ->filters([
             ])

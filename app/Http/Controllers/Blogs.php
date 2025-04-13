@@ -23,7 +23,7 @@ class Blogs extends Controller
     {
         $pageNumber = $this->request->query('p') ?? 1;
 
-        $posts = Blog::latest()->paginate(10, ['*'], 'p', $pageNumber);
+        $posts = Blog::where('is_active', true)->latest()->paginate(10, ['*'], 'p', $pageNumber);
         return Inertia::render('blogs', [
             'posts' => $posts
         ]);

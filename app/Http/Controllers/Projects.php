@@ -22,7 +22,7 @@ class Projects extends Controller
     {
         $pageNumber = $this->request->query('p') ?? 1;
 
-        $projects = \App\Models\Project::latest()->paginate(10, ['*'], 'p', $pageNumber);
+        $projects = \App\Models\Project::where('is_active', true)->latest()->paginate(10, ['*'], 'p', $pageNumber);
         return Inertia::render('projects', [
             'projects' => $projects
         ]);
