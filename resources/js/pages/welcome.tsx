@@ -3,9 +3,11 @@ import ExperienceEducation from '@/components/ExperienceEducation';
 import Hero from '@/components/Hero';
 import StoreFrontLayout from '@/layouts/storefront/StoreFrontLayout';
 import { useEffect, useRef, useState } from 'react';
-import { Head } from '@inertiajs/react'
+import { Head } from '@inertiajs/react';
 import ServicesSection from '@/components/Services';
 import Contact from '@/components/Contact';
+import YouTubeVideoShowcase from '@/components/YouTubeVideoShowcase';
+import CalComCalendar from '@/CalComCalendar';
 
 export default function Welcome() {
     const [visibleLetters, setVisibleLetters] = useState(0);
@@ -45,7 +47,7 @@ export default function Welcome() {
                     }
                 }
             },
-            { threshold: 0.2 }, // Trigger when 20% of the element is visible
+            { threshold: 0.2 } // Trigger when 20% of the element is visible
         );
 
         if (textRef.current) {
@@ -81,7 +83,8 @@ export default function Welcome() {
             </Head>
             <Hero />
             <div className="flex items-center justify-center bg-black p-4">
-                <div ref={textRef} className="my-22 max-w-7xl text-center text-3xl leading-[1.25] font-bold md:text-5xl">
+                <div ref={textRef}
+                     className="my-22 max-w-7xl text-center text-3xl leading-[1.25] font-bold md:text-5xl">
                     {letters.map((letter, index) => (
                         <span
                             key={index}
@@ -96,6 +99,8 @@ export default function Welcome() {
             <About />
             <ExperienceEducation />
             <ServicesSection />
+            <YouTubeVideoShowcase />
+            <CalComCalendar />
             <Contact />
         </StoreFrontLayout>
     );

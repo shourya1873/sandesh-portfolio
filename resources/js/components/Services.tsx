@@ -51,7 +51,7 @@ export default function ServicesSection() {
     return (
         <section className="bg-black text-white py-16 px-6 lg:px-24">
             <div className="max-w-6xl mx-auto text-center">
-                <h2 className="text-4xl font-bold mb-4">Our Services</h2>
+                <h2 className="text-4xl font-bold mb-4">My Service</h2>
                 <p className="text-gray-400 text-xl mb-12 max-w-2xl mx-auto">
                     From idea to execution — we bring your vision to life with creativity, technology, and precision.
                 </p>
