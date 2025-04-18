@@ -43,21 +43,45 @@ const CodeRenderer = ({ html }: { html: string }) => {
                 );
             }
 
-            if(domNode.name === 'h3') {
+            if (domNode.name === 'h3') {
                 return (
-                    <h3 className={'text-2xl font-bold'}> {domNode.children[0].data} </h3>
+                    <h3 className={'text-2xl font-bold mt-4'}> {domToReact(domNode.children)} </h3>
                 );
             }
 
-            if(domNode.name === 'h2') {
+            if (domNode.type === 'tag' && domNode.name === 'ul') {
                 return (
-                    <h2 className={'text-3xl font-bold'}> {domNode.children[0].data} </h2>
+                    <ul className="list-disc list-inside pl-4 mb-2">
+                        {domToReact(domNode.children, options)} {/* 👈 pass options here */}
+                    </ul>
                 );
             }
 
-            if(domNode.name === 'p') {
+            if (domNode.type === 'tag' && domNode.name === 'li') {
                 return (
-                    <p className={'text-lg'}> {domNode?.children[0]?.data} </p>
+                    <li className="mb-1 pl-2">
+                        {domToReact(domNode.children, options)} {/* 👈 recursive */}
+                    </li>
+                );
+            }
+
+            if (domNode.name === 'blockquote') {
+                return (
+                    <blockquote className="border-l-4 border-gray-500 pl-4 italic text-gray-300 my-4">
+                        {domToReact(domNode.children)}
+                    </blockquote>
+                );
+            }
+
+            if (domNode.name === 'h2') {
+                return (
+                    <h2 className={'text-3xl font-bold mt-4'}> {domToReact(domNode.children)} </h2>
+                );
+            }
+
+            if (domNode.name === 'p') {
+                return (
+                    <p className={'text-lg mt-2'}> {domToReact(domNode.children)} </p>
                 );
             }
 
@@ -86,7 +110,7 @@ const CodeRenderer = ({ html }: { html: string }) => {
                     </div>
                 );
             }
-        },
+        }
     };
 
     return (
