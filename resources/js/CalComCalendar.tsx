@@ -18,7 +18,7 @@ export default function CalComCalendar() {
                 </p>
             </div>
             <Cal namespace="15min"
-                 calLink="sandesh-s-j6wqkg/15min"
+                 calLink="sandesh-s-yhfchh/15min"
                  style={{ width: '100%', height: '100%', overflow: 'scroll' }}
                  config={{ 'layout': 'month_view' }}
             ></Cal>
