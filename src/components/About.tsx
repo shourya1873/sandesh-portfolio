@@ -21,7 +21,7 @@ const About = () => {
                     About Me
                 </motion.h2>
                 <motion.div className={'px-8 sm:px-18 lg:px-28'}>
-                    I’m a Fullstack JavaScript Engineer with 6+ years of professional experience — transitioning from a
+                    I&#39;m a Fullstack JavaScript Engineer with 6+ years of professional experience — transitioning from a
                     Magento-based enterprise engineering background to building scalable, modern web applications using
                     the JavaScript stack and Generative AI.
                     <br/>

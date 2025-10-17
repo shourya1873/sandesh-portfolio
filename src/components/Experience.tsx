@@ -23,16 +23,6 @@ const experiences = [
     }
 ];
 
-const rowVariants = {
-    rest: {},
-    hover: {},
-};
-
-const underlineVariants = {
-    rest: {scaleX: 0, opacity: 0},
-    hover: {scaleX: 1, opacity: 1},
-};
-
 const Experience = () => {
     return (
         <motion.div
