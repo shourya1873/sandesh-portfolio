@@ -45,8 +45,6 @@ const About = () => {
                         </li>
                     </ul>
                     <br/>
-                    🚀 Actively seeking opportunities as a Fullstack Engineer in product-based teams focused on
-                    innovation, performance, and user impact.
                 </motion.div>
                 <motion.div className="flex flex-col items-center gap-4">
                     <Link href={'https://sandeshs.in/'}

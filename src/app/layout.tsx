@@ -3,6 +3,7 @@ import {Bricolage_Grotesque} from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/generic/Navbar";
 import CursorFollower from "@/components/generic/CursorFollower";
+import Footer from "@/components/generic/Footer";
 
 const bricolageGrotesque = Bricolage_Grotesque({
     subsets: ["latin"],
@@ -25,6 +26,7 @@ export default function RootLayout(
         <CursorFollower/>
         <Navbar/>
         {children}
+        <Footer/>
         </body>
         </html>
     );
