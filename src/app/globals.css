@@ -120,3 +120,152 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Code block syntax highlighting */
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0;
+  background: transparent;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: oklch(0.556 0 0);
+  font-style: italic;
+}
+
+.dark .hljs-comment,
+.dark .hljs-quote {
+  color: oklch(0.708 0 0);
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+  color: oklch(0.398 0.07 227.392);
+  font-weight: 600;
+}
+
+.dark .hljs-keyword,
+.dark .hljs-selector-tag,
+.dark .hljs-subst {
+  color: oklch(0.696 0.17 162.48);
+}
+
+.hljs-number,
+.hljs-literal,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag .hljs-attr {
+  color: oklch(0.646 0.222 41.116);
+}
+
+.dark .hljs-number,
+.dark .hljs-literal,
+.dark .hljs-variable,
+.dark .hljs-template-variable,
+.dark .hljs-tag .hljs-attr {
+  color: oklch(0.769 0.188 70.08);
+}
+
+.hljs-string,
+.hljs-doctag {
+  color: oklch(0.398 0.07 227.392);
+}
+
+.dark .hljs-string,
+.dark .hljs-doctag {
+  color: oklch(0.696 0.17 162.48);
+}
+
+.hljs-title,
+.hljs-section,
+.hljs-selector-id {
+  color: oklch(0.205 0 0);
+  font-weight: 600;
+}
+
+.dark .hljs-title,
+.dark .hljs-section,
+.dark .hljs-selector-id {
+  color: oklch(0.922 0 0);
+}
+
+.hljs-type,
+.hljs-class .hljs-title {
+  color: oklch(0.646 0.222 41.116);
+  font-weight: 600;
+}
+
+.dark .hljs-type,
+.dark .hljs-class .hljs-title {
+  color: oklch(0.769 0.188 70.08);
+}
+
+.hljs-tag,
+.hljs-name,
+.hljs-attribute {
+  color: oklch(0.398 0.07 227.392);
+  font-weight: normal;
+}
+
+.dark .hljs-tag,
+.dark .hljs-name,
+.dark .hljs-attribute {
+  color: oklch(0.696 0.17 162.48);
+}
+
+.hljs-regexp,
+.hljs-link {
+  color: oklch(0.646 0.222 41.116);
+}
+
+.dark .hljs-regexp,
+.dark .hljs-link {
+  color: oklch(0.769 0.188 70.08);
+}
+
+.hljs-symbol,
+.hljs-bullet {
+  color: oklch(0.577 0.245 27.325);
+}
+
+.dark .hljs-symbol,
+.dark .hljs-bullet {
+  color: oklch(0.704 0.191 22.216);
+}
+
+.hljs-built_in,
+.hljs-builtin-name {
+  color: oklch(0.398 0.07 227.392);
+}
+
+.dark .hljs-built_in,
+.dark .hljs-builtin-name {
+  color: oklch(0.696 0.17 162.48);
+}
+
+.hljs-meta {
+  color: oklch(0.556 0 0);
+}
+
+.dark .hljs-meta {
+  color: oklch(0.708 0 0);
+}
+
+.hljs-deletion {
+  background: oklch(0.577 0.245 27.325 / 0.2);
+}
+
+.hljs-addition {
+  background: oklch(0.398 0.07 227.392 / 0.2);
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: 600;
+}

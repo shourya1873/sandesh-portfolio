@@ -1,33 +1,29 @@
-import type {Metadata} from "next";
-import {Bricolage_Grotesque} from "next/font/google";
-import "./globals.css";
-import Navbar from "@/components/generic/Navbar";
-import CursorFollower from "@/components/generic/CursorFollower";
-import Footer from "@/components/generic/Footer";
+import type { Metadata } from "next"
+import { Bricolage_Grotesque } from "next/font/google"
+import "./globals.css"
+import { AnalyticsScripts } from "@/components/AnalyticsScripts"
+import { Toaster } from "sonner"
 
 const bricolageGrotesque = Bricolage_Grotesque({
     subsets: ["latin"],
-});
+})
 
 export const metadata: Metadata = {
-    title: "Sandesh S",
+    title: {
+        default: "Sandesh S",
+        template: "%s | Sandesh S",
+    },
     description: "Personal Portfolio",
-};
+}
 
-export default function RootLayout(
-    {
-        children,
-    }: Readonly<{
-        children: React.ReactNode;
-    }>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
-        <html lang="en" className={'dark'}>
-        <body className={`${bricolageGrotesque.className} antialiased`}>
-        <CursorFollower/>
-        <Navbar/>
-        {children}
-        <Footer/>
-        </body>
+        <html lang="en" className="dark">
+            <body className={`${bricolageGrotesque.className} antialiased`}>
+                <AnalyticsScripts />
+                {children}
+                <Toaster />
+            </body>
         </html>
-    );
+    )
 }
