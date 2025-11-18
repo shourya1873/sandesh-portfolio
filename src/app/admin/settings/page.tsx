@@ -6,6 +6,8 @@ import { db } from "@/server/db"
 import { siteConfig } from "@/server/db/schema"
 import { verifyAdminToken } from "@/lib/jwt"
 
+export const dynamic = "force-dynamic"
+
 async function getConfig() {
     try {
         const cookieStore = await cookies()

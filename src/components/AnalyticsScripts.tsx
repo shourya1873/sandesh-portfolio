@@ -2,6 +2,8 @@ import Script from "next/script"
 import { db } from "@/server/db"
 import { siteConfig } from "@/server/db/schema"
 
+export const dynamic = "force-dynamic"
+
 export async function AnalyticsScripts() {
     let gtmId = ""
     let gaId = ""
@@ -17,7 +19,11 @@ export async function AnalyticsScripts() {
         gaId = configMap.ga_id || ""
         adsenseId = configMap.adsense_id || ""
     } catch (error) {
-        console.error("Error fetching analytics config:", error)
+        // Silently fail during build time or when DB is unavailable
+        // This is expected during static generation
+        if (process.env.NODE_ENV === "development") {
+            console.error("Error fetching analytics config:", error)
+        }
     }
 
     return (

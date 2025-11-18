@@ -4,41 +4,57 @@ import { and, count, desc, eq } from "drizzle-orm"
 import { db, blogs, projects } from "@/server/db"
 
 export const getLatestBlogs = cache(async (limit = 6) => {
-    const allPublished = await db.query.blogs.findMany({
-        where: eq(blogs.status, "published"),
-    })
-    
-    // Sort by publishedAt (most recent first), then by createdAt if publishedAt is null
-    const sorted = allPublished.sort((a, b) => {
-        if (a.publishedAt && b.publishedAt) {
-            return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-        }
-        if (a.publishedAt) return -1
-        if (b.publishedAt) return 1
-        return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-    })
-    
-    const items = sorted.slice(0, limit)
+    try {
+        const allPublished = await db.query.blogs.findMany({
+            where: eq(blogs.status, "published"),
+        })
+        
+        // Sort by publishedAt (most recent first), then by createdAt if publishedAt is null
+        const sorted = allPublished.sort((a, b) => {
+            if (a.publishedAt && b.publishedAt) {
+                return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+            }
+            if (a.publishedAt) return -1
+            if (b.publishedAt) return 1
+            return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+        })
+        
+        const items = sorted.slice(0, limit)
 
-    return items.map((item) => ({
-        ...item,
-        coverImage: item.coverImage ?? null,
-        coverImageAlt: item.coverImageAlt ?? null,
-    }))
+        return items.map((item) => ({
+            ...item,
+            coverImage: item.coverImage ?? null,
+            coverImageAlt: item.coverImageAlt ?? null,
+        }))
+    } catch (error) {
+        // Handle database errors gracefully during build time
+        if (process.env.NODE_ENV === "development") {
+            console.error("Error fetching latest blogs:", error)
+        }
+        return []
+    }
 })
 
 export const getLatestProjects = cache(async (limit = 6) => {
-    const items = await db.query.projects.findMany({
-        where: eq(projects.status, "published"),
-        orderBy: desc(projects.publishedAt),
-        limit,
-    })
+    try {
+        const items = await db.query.projects.findMany({
+            where: eq(projects.status, "published"),
+            orderBy: desc(projects.publishedAt),
+            limit,
+        })
 
-    return items.map((item) => ({
-        ...item,
-        heroImage: item.heroImage ?? null,
-        heroImageAlt: item.heroImageAlt ?? null,
-    }))
+        return items.map((item) => ({
+            ...item,
+            heroImage: item.heroImage ?? null,
+            heroImageAlt: item.heroImageAlt ?? null,
+        }))
+    } catch (error) {
+        // Handle database errors gracefully during build time
+        if (process.env.NODE_ENV === "development") {
+            console.error("Error fetching latest projects:", error)
+        }
+        return []
+    }
 })
 
 export const getBlogBySlug = cache(async (slug: string) => {
