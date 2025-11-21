@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Skills from "@/components/Skills";
@@ -6,6 +7,30 @@ import Contact from "@/components/Contact";
 import { LatestProjects } from "@/components/projects/LatestProjects";
 import { LatestBlogs } from "@/components/blogs/LatestBlogs";
 import { CalEmbed } from "@/components/CalEmbed";
+import { generateSEOMetadata, getBaseUrl } from "@/lib/seo";
+
+const baseUrl = getBaseUrl();
+
+export const metadata: Metadata = {
+    ...generateSEOMetadata({
+        title: "Sandesh S - Software Developer & Portfolio",
+        description: "Welcome to my portfolio! I'm a software developer specializing in web development, full-stack applications, and modern JavaScript frameworks. Explore my projects, read my blog posts, and get in touch.",
+        keywords: [
+            "software developer",
+            "web developer",
+            "portfolio",
+            "full-stack developer",
+            "React developer",
+            "Next.js developer",
+            "TypeScript",
+            "JavaScript",
+            "programming",
+            "software engineering",
+            "web development",
+        ],
+        canonical: baseUrl,
+    }),
+};
 
 export default function Home() {
     return (

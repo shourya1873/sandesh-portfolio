@@ -7,10 +7,26 @@ import { Calendar, ArrowRight } from "lucide-react"
 import { getBlogsPaginated } from "@/lib/content"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { generateSEOMetadata, getBaseUrl, generateBlogCollectionStructuredData } from "@/lib/seo"
+
+const baseUrl = getBaseUrl()
 
 export const metadata: Metadata = {
-    title: "Blogs",
-    description: "Latest blog posts and articles",
+    ...generateSEOMetadata({
+        title: "Blog Posts - Software Development Articles & Tutorials",
+        description: "Explore my latest blog posts about software development, web technologies, programming tutorials, and technical insights. Learn about React, Next.js, TypeScript, and more.",
+        keywords: [
+            "blog",
+            "software development blog",
+            "programming tutorials",
+            "web development articles",
+            "React tutorials",
+            "Next.js guides",
+            "TypeScript tips",
+            "coding blog",
+        ],
+        canonical: `${baseUrl}/blogs`,
+    }),
 }
 
 interface BlogsPageProps {
@@ -22,8 +38,15 @@ export default async function BlogsPage({ searchParams }: BlogsPageProps) {
     const currentPage = Number(page) || 1
     const { items, total, pages } = await getBlogsPaginated(currentPage, 6)
 
+    const collectionStructuredData = generateBlogCollectionStructuredData()
+
     return (
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionStructuredData) }}
+            />
+            <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
             <header className="mb-16 text-center">
                 <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-primary">All Posts</p>
                 <h1 className="mb-4 text-4xl font-bold tracking-tight sm:text-5xl">Blog</h1>
@@ -106,7 +129,8 @@ export default async function BlogsPage({ searchParams }: BlogsPageProps) {
                     )}
                 </>
             )}
-        </div>
+            </div>
+        </>
     )
 }
 

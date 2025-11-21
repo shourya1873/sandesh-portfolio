@@ -7,10 +7,27 @@ import { Calendar, ArrowRight } from "lucide-react"
 import { getProjectsPaginated } from "@/lib/content"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { generateSEOMetadata, getBaseUrl, generateProjectCollectionStructuredData } from "@/lib/seo"
+
+const baseUrl = getBaseUrl()
 
 export const metadata: Metadata = {
-    title: "Projects",
-    description: "Portfolio projects and case studies",
+    ...generateSEOMetadata({
+        title: "Portfolio Projects - Web Development & Software Engineering",
+        description: "Browse my portfolio of software development projects, web applications, and case studies. See examples of my work in React, Next.js, full-stack development, and more.",
+        keywords: [
+            "portfolio",
+            "projects",
+            "web development projects",
+            "software projects",
+            "React projects",
+            "Next.js projects",
+            "full-stack projects",
+            "case studies",
+            "programming portfolio",
+        ],
+        canonical: `${baseUrl}/projects`,
+    }),
 }
 
 interface ProjectsPageProps {
@@ -22,8 +39,15 @@ export default async function ProjectsPage({ searchParams }: ProjectsPageProps) 
     const currentPage = Number(page) || 1
     const { items, total, pages } = await getProjectsPaginated(currentPage, 6)
 
+    const collectionStructuredData = generateProjectCollectionStructuredData()
+
     return (
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionStructuredData) }}
+            />
+            <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
             <header className="mb-16 text-center">
                 <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-primary">Portfolio</p>
                 <h1 className="mb-4 text-4xl font-bold tracking-tight sm:text-5xl">Projects</h1>
@@ -106,7 +130,8 @@ export default async function ProjectsPage({ searchParams }: ProjectsPageProps) 
                     )}
                 </>
             )}
-        </div>
+            </div>
+        </>
     )
 }
 
