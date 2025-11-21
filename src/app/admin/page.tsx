@@ -6,6 +6,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { SidebarTrigger } from "@/components/ui/sidebar"
 
+// Force dynamic rendering - admin pages require authentication
+export const dynamic = "force-dynamic"
+export const revalidate = 0
+
 async function getAdminProfile() {
     const token = cookies().get("admin_token")?.value
     if (!token) return null

@@ -5,6 +5,10 @@ import { ProjectManager } from "@/components/admin/projects/ProjectManager"
 import type { ProjectRecord } from "@/types/content"
 import { SidebarTrigger } from "@/components/ui/sidebar"
 
+// Force dynamic rendering - admin pages require database access
+export const dynamic = "force-dynamic"
+export const revalidate = 0
+
 export default async function AdminProjectsPage() {
     const items = await db.query.projects.findMany({
         orderBy: desc(projects.updatedAt),

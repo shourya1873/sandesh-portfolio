@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Bricolage_Grotesque } from "next/font/google"
 import "./globals.css"
 import { AnalyticsScripts } from "@/components/AnalyticsScripts"
@@ -68,15 +68,16 @@ export const metadata: Metadata = {
             "max-snippet": -1,
         },
     },
+}
+
+export const viewport: Viewport = {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
     themeColor: [
         { media: "(prefers-color-scheme: light)", color: "#ffffff" },
         { media: "(prefers-color-scheme: dark)", color: "#000000" },
     ],
-    viewport: {
-        width: "device-width",
-        initialScale: 1,
-        maximumScale: 5,
-    },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -5,6 +5,10 @@ import { BlogManager } from "@/components/admin/blogs/BlogManager"
 import type { BlogRecord } from "@/types/content"
 import { SidebarTrigger } from "@/components/ui/sidebar"
 
+// Force dynamic rendering - admin pages require database access
+export const dynamic = "force-dynamic"
+export const revalidate = 0
+
 export default async function AdminBlogsPage() {
     const items = await db.query.blogs.findMany({
         orderBy: desc(blogs.updatedAt),

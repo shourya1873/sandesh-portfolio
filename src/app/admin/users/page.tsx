@@ -4,6 +4,10 @@ import { db, admins } from "@/server/db"
 import { AdminUserManager } from "@/components/admin/users/AdminUserManager"
 import { SidebarTrigger } from "@/components/ui/sidebar"
 
+// Force dynamic rendering - admin pages require database access
+export const dynamic = "force-dynamic"
+export const revalidate = 0
+
 type AdminUser = {
     id: string
     name: string
