@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { LayoutDashboard, FileText, FolderKanban, Settings, LogOut, Home, Users } from "lucide-react"
+import { LayoutDashboard, FileText, FolderKanban, Settings, LogOut, Home, Users, FileDown } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar"
@@ -23,6 +23,11 @@ const menuItems = [
         title: "Projects",
         url: "/admin/projects",
         icon: FolderKanban,
+    },
+    {
+        title: "Resources",
+        url: "/admin/resources",
+        icon: FileDown,
     },
     {
         title: "Users",

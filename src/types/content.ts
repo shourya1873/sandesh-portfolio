@@ -36,4 +36,16 @@ export type ProjectRecord = {
     updatedAt: string
 }
 
+export type ResourceRecord = {
+    id: string
+    title: string
+    description: string | null
+    fileUrl: string
+    fileName: string
+    fileSize: string | null
+    status: "active" | "inactive"
+    createdAt: string
+    updatedAt: string
+}
+
 

@@ -2,7 +2,7 @@ import { mkdir, writeFile } from "fs/promises"
 import path from "path"
 import { randomUUID } from "crypto"
 
-type UploadFolder = "blogs" | "projects" | "general"
+type UploadFolder = "blogs" | "projects" | "general" | "resources"
 
 export async function saveUploadedFile(file: File, folder: UploadFolder) {
     const bytes = await file.arrayBuffer()

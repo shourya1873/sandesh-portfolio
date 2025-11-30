@@ -2,7 +2,7 @@ import { NextResponse } from "next/server"
 
 import { saveUploadedFile } from "@/lib/uploads"
 
-const allowedFolders = new Set(["blogs", "projects", "general"])
+const allowedFolders = new Set(["blogs", "projects", "general", "resources"])
 
 export async function POST(request: Request) {
     const formData = await request.formData()
@@ -18,7 +18,7 @@ export async function POST(request: Request) {
     }
 
     try {
-        const url = await saveUploadedFile(file, folder as "blogs" | "projects" | "general")
+        const url = await saveUploadedFile(file, folder as "blogs" | "projects" | "general" | "resources")
         return NextResponse.json({ url })
     } catch (error) {
         console.error("[upload]", error)

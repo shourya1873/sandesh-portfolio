@@ -66,4 +66,18 @@ export const siteConfig = pgTable("site_config", {
 
 export type SiteConfig = typeof siteConfig.$inferSelect
 
+export const resources = pgTable("resources", {
+    id: uuid("id").primaryKey().defaultRandom(),
+    title: text("title").notNull(),
+    description: text("description"),
+    fileUrl: text("file_url").notNull(),
+    fileName: text("file_name").notNull(),
+    fileSize: text("file_size"),
+    status: text("status").default("active").notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull().$onUpdate(() => new Date()),
+})
+
+export type Resource = typeof resources.$inferSelect
+
 
